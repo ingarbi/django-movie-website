@@ -146,7 +146,24 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_REDIRECT_URL = "/"
 
-EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'uchdjango@gmail.com' #Whoever wants can use it
+EMAIL_HOST_PASSWORD = 'lsppgxjdvlgwnvhw'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+REDIS_HOST = '127.0.0.1'
+REDIS_PORT = 6379
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
+CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 
 
 gettext = lambda s: s
